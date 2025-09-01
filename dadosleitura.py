@@ -70,7 +70,7 @@ if selected_genre != "Todos":
 if df_filtered.empty:
     st.warning("Não há dados para os filtros selecionados.")
 else:
-      #gráfico com os dados filtrados
+     #gráfico com os dados filtrados
     fig_gen = px.bar(df_filtered, x="Genero ", y="Lido por ", title="Leitores por Gênero Literário")
 
 
@@ -163,8 +163,8 @@ col3.plotly_chart(fig_mensal, use_container_width=True)
 
 #top 5 leitores
 
-# Agrupar e contar livros por leitor
-df_top_leitores = df.groupby("Lido por ").agg({"Titulo": "count"}).reset_index()
+# Agrupar e contar livros por leitor com o DataFrame filtrado
+df_top_leitores = df_filtered.groupby("Lido por ").agg({"Titulo": "count"}).reset_index()
 df_top_leitores.rename(columns={"Titulo": "Livros Lidos"}, inplace=True)
 
 # Ordenar do maior para o menor e pegar os 5 primeiros
